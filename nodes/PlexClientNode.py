@@ -2,11 +2,7 @@
 '''
 PlexClient Node used by PlexController
 '''
-try:
-    import polyinterface
-except ImportError:
-    import pgc_interface as polyinterface
-
+import udi_interface
 from datetime import datetime, timedelta
 
 # Define Plex strings and their numerical values. 
@@ -48,7 +44,7 @@ dRatings = {
     "R":9, "TV-18+":9, "ca/18A":9, "ca/R":9, "18":9
     }
 
-class PlexClient(polyinterface.Node):
+class PlexClient(udi_interface.Node):
 
     def __init__(self, controller, primary, address, name, logger, rapid_trigger):
         super().__init__(controller, primary, address, name)
@@ -61,6 +57,8 @@ class PlexClient(polyinterface.Node):
         self.rapidFlag = False
         self.rapid_trigger = rapid_trigger
         self.logger.info('Plex Client Node Created {} {}.'.format(name,address))
+
+        controller.subscribe(controller.START, self.start, address)
 
     def start(self):
         # Load Previous postCount from ISY GV5 driver and reset rapidFlag. 

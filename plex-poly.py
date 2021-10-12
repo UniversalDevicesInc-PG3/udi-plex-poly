@@ -3,29 +3,26 @@
 Plex Webhooks NodeServer for UDI Polyglot v2
 by ch491 (Chad Hoevenaars) ch491@yahoo.com
 """
-try:
-    import polyinterface
-except ImportError:
-    import pgc_interface as polyinterface
+import udi_interface
 
 from sys import exit
 # Grab the Plex Controller Class Definition from .\Nodes folder.
 from nodes import PlexController
 
 # Create a LOGGER to Polyglot.
-logger = polyinterface.LOGGER
+logger = udi_interface.LOGGER
 
 if __name__ == "__main__":
     try:
         # Instantiate and Start the Interface to Polyglot & Plex Controller.
-        polyglot = polyinterface.Interface('udi-plex-poly')
+        polyglot = udi_interface.Interface([])
         polyglot.start()
         
         # Creates the Controller Node and passes in the Interface
-        control = PlexController(polyglot,logger)
+        PlexController(polyglot,logger, 'controller', 'controller', 'udi-plex-poly')
         
         # Sit around and do nothing forever, keeping your program running.
-        control.runForever()
+        polyglot.runForever()
         
     except (KeyboardInterrupt, SystemExit):
         # Catch SIGTERM or Control-C and exit cleanly.
