@@ -1,1 +1,1 @@
-udi_interface >= 3.0.18
+udi_interface >= 3.0.40
