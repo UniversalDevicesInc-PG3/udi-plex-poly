@@ -191,7 +191,7 @@ class PlexController(udi_interface.Node):
 
         # Check if new client.
         if self.poly.getNode(uuid) is None:
-            self.poly.addNode(PlexClient(self.poly, self.address, uuid, devName, self.logger, self.rapid_trigger),update=True)
+            self.poly.addNode(PlexClient(self.poly, self.address, uuid, devName, self.logger, self.rapid_trigger))
             self.setDriver("GV1", len(self.poly.getNodes())-1)
 
         # Update Node with new information about current action. 

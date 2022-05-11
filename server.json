@@ -17,8 +17,8 @@
         {
             "title": "udi-plex-poly: a UDI-ISY994-Polyglot Python NodeServer for Plex-Webhook Integration",
             "author": "Chad Hoevenaars (ch491)",
-            "version": "2.0.0",
-            "date": "Oct 12, 2021",
+            "version": "2.0.1",
+            "date": "May 10, 2022",
             "source": "https://github.com/UniversalDevicesInc-PG3/udi-plex-poly",
             "license": "https://github.com/UniversalDevicesInc-PG3/udi-plex-poly/blob/master/LICENSE"
         }
